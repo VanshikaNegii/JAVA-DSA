@@ -1,0 +1,54 @@
+public class stack1
+{
+    private static class Nodes{
+        int data;               //every node has a integer data and reference to next data
+        Nodes next;     //user defined data type
+        Nodes(int data){
+            this.data=data;
+            next=null;
+        }
+    }
+    static class StackDS{
+        public static Nodes head=null;
+        public static void push(int data){
+            Nodes newNode=new Nodes(data);
+                if(head==null){
+                    head=newNode;
+                    return;
+                }
+            newNode.next=head;
+            head=newNode;    
+        }
+        public static boolean isempty(){
+            return head==null;
+        }
+        public static int pop(){
+            if(isempty()){
+                return -1;
+            }
+            Nodes top=head;
+            head=head.next;
+            return top.data;
+        }
+        public static int peek(){
+            if(isempty()){
+                return -1;
+            }
+            Nodes top=head;
+            return top.data;
+        }
+    }
+    public static void main(String args[])
+    {
+        StackDS st=new StackDS();
+        st.push(1);
+        st.push(5);
+        st.push(0);
+        st.push(7);
+
+        while(!st.isempty()){
+            System.out.print(st.peek()+ " fit");
+            st.pop();
+        }
+    }
+}
