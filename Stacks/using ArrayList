@@ -1,0 +1,42 @@
+//Stack using ArrayList
+import java.util.ArrayList;
+class stack2{
+    static class arraylistt{
+        static ArrayList <Integer> al=new ArrayList<>();
+        public static boolean isEmpty(){
+            return al.size()==0;
+        }
+        //push
+        public void push(int data){
+            al.add(data);
+        }
+        //pop
+        public int pop(){
+            if(isEmpty()){
+                return -1;
+            }
+            int top=al.remove(al.size()-1);//list ke last index ka data
+            return top;
+        }
+        //peek
+        public static int peek(){
+            if(isEmpty()){
+                return -1;
+            }
+            return al.get(al.size()-1);
+        }
+    }
+    public static void main(String args[]){
+        arraylistt s1=new arraylistt();
+        s1.push(100);
+        s1.push(99);
+        s1.push(94);
+        s1.push(95);   
+
+        while(!s1.isEmpty()){
+            System.out.println(s1.peek());
+            s1.pop();
+        }
+              
+    }
+}
