@@ -1,0 +1,27 @@
+//Push at the bottom of the stack
+import java.util.*;
+class stack4{
+    static void pushatbottom(Stack <Integer> s, int data){
+        if(s.isEmpty()){
+            s.push(data);
+            return;
+        }
+        int top=s.pop();
+        pushatbottom(s,data);
+        s.push(top);
+    }
+
+    public static void main(String args[]){
+        Stack<Integer> s=new Stack<>();
+        s.push(100);
+        s.push(99);
+        s.push(98);
+        s.push(97);
+        s.push(96);
+
+        pushatbottom(s, 200);
+        while(!s.isEmpty()){
+            System.out.print(s.pop()+ " ");
+        }
+    }
+}
