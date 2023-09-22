@@ -1,0 +1,61 @@
+//using Arrays
+import java.util.*;
+public class queue1{
+    static class queue2{
+        static int arr[];   //cannot initialize until constructor gets created
+        static int size;
+        static int rear=-1;    
+        
+        queue2(int n){      //constructor
+            this.size=n;
+            arr=new int[size];
+        }
+        public static boolean isEmpty(){
+            return rear==-1;
+        }
+
+        public static void enqueue(int data){                    //ADD
+        //Firstly check if the queue is already full
+        if(rear==size-1){
+            System.out.println("Full queue");
+            return;
+        }
+        rear++;     // if stack is empty, bring to rear from -1 to 0
+        arr[rear]=data;
+        }
+
+        public static int dequeue()
+        {                            //DELETE
+        if(isEmpty())
+        {
+            return -1;
+        }
+        int front= arr[0];
+        for(int i=0;i<rear;i++){
+            arr[i]=arr[i+1];
+        }
+        rear--;
+        return front;
+        }
+        
+        public static int peek(){
+        if(isEmpty())
+        {
+            return -1;
+        }
+        return arr[0];
+        }
+    }
+    public static void main(String args[]){
+        queue2 q=new queue2(8);
+        q.enqueue(100);
+        q.enqueue(200);
+        q.enqueue(2908);
+        q.enqueue(1507);
+        //F I F O  
+        while(!q.isEmpty()){
+            System.out.println(q.peek());
+            q.dequeue();
+        }
+    }
+}
