@@ -1,0 +1,68 @@
+import java.util.*;
+public class queue2{
+    static int arr[];
+    static int size;
+    static int front=-1;
+    static int rear=-1;
+
+    queue2(int size){
+        this.size=size;
+        arr=new int[size];
+
+    }
+    public static boolean isEmpty(){
+        return (rear==-1 && front==-1);
+    }
+    public static boolean isFull(){
+        return (rear+1)%size==front;
+    }
+    public static void add(int data){
+        if(isFull()){
+            System.out.println("Already full");
+            return;
+        }
+        if(front==-1){
+            front=0;
+        }
+        rear=(rear+1)%size;
+        arr[rear]=data;
+    }
+    public static int dequeue(){
+        if(isEmpty()){
+            System.out.println("Empty queue");
+            return -1;
+        }
+        int result=arr[front];
+        //when array has only 1 element
+        if(front==rear){
+            front=rear=-1;      //0th element has been removed
+        }
+        //when array has more than 1 element
+        else{
+            front=(front+1)%size;
+        }
+        return result;
+    }
+    public static int peek(){
+        if(isEmpty()){
+            System.out.println("Empty queue");
+            return -1;
+        }
+        return arr[front];
+    }
+    public static void main(String args[]){
+        queue2 q=new queue2(4);
+        q.add(10);
+        q.add(40);
+        q.add(70);
+        q.add(100);
+        System.out.println(q.dequeue());
+        q.add(200);
+        q.add(99);      //already full
+        System.out.println(q.dequeue());
+        while(!q.isEmpty()){
+            System.out.println(q.peek()+ " -- ");
+            q.dequeue();
+        }
+    }
+}
