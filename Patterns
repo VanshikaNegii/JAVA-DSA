@@ -1,1 +1,112 @@
 
+public class patterns2{
+
+static void hollowrectangle(int rows, int cols){
+for(int i=1 ; i<=rows ; i++){
+for(int j=1; j<=cols; j++){
+if(i==1 || i==rows || j==1 || j==cols){
+System.out.print("*");
+}
+else{
+System.out.print(" ");
+}	
+}	        //j loop close
+System.out.println();
+}	        //i loop close
+}	        //hollowrectangle fn close
+
+static void rightangledpattern(int totrows){
+for(int i=1; i<=totrows; i++){	    //outer
+for(int j=1; j<=totrows-i  ; j++)   //spaces= totrows-row no.
+{	
+System.out.print(" ");
+}	//space loop close
+for(int j=1; j<=i; j++)             //stars no. of stars=row no.
+{			
+System.out.print("*");
+}	//stars loop close
+System.out.println();
+}	//outer rows loop close
+}
+
+static void countingpattern(int totrows){
+for(int i=1; i<=totrows; i++){		//outerloop
+for(int j=1; j<=totrows-i+1; j++){	//count loop
+System.out.print(j);
+}								//countloop close
+System.out.println();
+}								//outerloop close
+}
+static void floydstriangle(int totrows){
+int count=1;
+for(int i=1; i<=totrows; i++){		//outerloop
+for(int j=1; j<=i; j++){				//count loop
+System.out.print(count + " ");
+count++;
+}								//countloop close
+System.out.println();
+}								//outerloop close
+}
+
+static void zeroone_triangle(int totrows){
+for(int i=1; i<=totrows; i++){		//outerloop
+for(int j=1; j<=i; j++)
+{		//inner loop
+if((i+j)%2==0){
+System.out.print("1");
+}
+else{
+System.out.print("0");
+}
+}								//innerloop close
+System.out.println();
+}								//outerloop close
+}
+
+static void butterfly(int totrows){
+
+//UPPERHALF			//outerloop
+for(int i=1;i<=totrows;i++){
+//stars  = istars
+for(int j=1; j<=i; j++){
+System.out.print("*");
+}
+//spaces         =2(totrows-1)
+for(int j=1; j<=2 * (totrows-i); j++){
+System.out.print(" ");
+}
+//stars  
+for(int j=1; j<=i; j++){
+System.out.print("*");
+} 
+System.out.println();
+}
+
+//LOWERHALF 			//innerloop
+for(int i=totrows; i>=1; i--)
+{
+//stars  = i stars
+for(int j=1; j<=i; j++){
+System.out.print("*");
+}
+//spaces         =2(totrows-1)
+for(int j=1; j<=2 * (totrows-i); j++){
+System.out.print("  ");
+}
+//stars  
+for(int j=1; j<=i; j++){
+System.out.print("*");
+}
+System.out.println();
+}
+}
+
+public static void main(String args[]){
+hollowrectangle(10,10);
+rightangledpattern(8);
+countingpattern(6);
+floydstriangle(8);
+zeroone_triangle(3);
+butterfly(4);
+}
+}
