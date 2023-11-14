@@ -1,0 +1,66 @@
+public class patterns3
+{
+static void solid_rhombus(int n){
+for(int i=1; i<=n; i++){
+//spaces
+for(int spaces=1; spaces<=n-i; spaces++){
+System.out.print(" ");
+}
+//stars
+for(int stars=1; stars<=n; stars++){
+System.out.print("*");
+}
+System.out.println();
+}
+}   //fn close
+
+static void tilted_hollow_rhombus(int n){
+for(int i=1; i<=n; i++){	//row loop
+// starting spaces
+for(int spaces=1; spaces<=n-i; spaces++){
+System.out.print(" ");
+}
+//stars+spaces
+for(int j=1; j<=n ; j++ ){
+if(i==1 || i==n || j==1 || j==n){
+System.out.print("*");
+}
+else{
+System.out.print(" ");
+}
+}   //j loop close
+System.out.println();       //new line
+}	//row loop close
+
+}		//fn close
+
+static void diamond_pattern(int size){
+//1st half outer loop
+for(int i=1; i<=size; i++){
+for(int j=1;j<=size-i; j++){		//spaces 
+System.out.print(" ");
+}			
+for(int k=1; k<=2*i-1; k++){		//stars 
+System.out.print("*");
+}
+System.out.println();
+}							//outer loop close
+
+//2nd half outer loop
+for(int i=size-1; i>=1; i--){	
+for(int j=1; j<=size-i; j++){		//spaces 
+System.out.print(" ");
+}
+for(int k=1; k<=2*i-1; k++){		//stars 
+System.out.print("*");
+}
+System.out.println();
+}							//outer loop close
+}							//fn close
+
+public static void main(String args[]){
+solid_rhombus(5);
+tilted_hollow_rhombus(5);
+diamond_pattern(4);
+}
+}
